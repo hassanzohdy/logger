@@ -7,7 +7,7 @@ import {
 import dayjs from "dayjs";
 import { EOL } from "os";
 import { LogChannel } from "../LogChannel";
-import { DebugMode, LogLevel } from "../types";
+import { LogLevel } from "../types";
 
 export type FileLogConfig = {
   storagePath?: string;
@@ -23,11 +23,6 @@ export class FileLog extends LogChannel {
    * {@inheritdoc}
    */
   public name = "file";
-
-  /**
-   * Debug mode
-   */
-  public currentDebugMode: DebugMode = DebugMode.daily;
 
   /**
    * Channel configurations
@@ -64,15 +59,6 @@ export class FileLog extends LogChannel {
         ...configurations.dateFormat,
       },
     };
-
-    return this;
-  }
-
-  /**
-   * Set debug mode
-   */
-  public debugMode(debugMode: DebugMode) {
-    this.currentDebugMode = debugMode;
 
     return this;
   }
