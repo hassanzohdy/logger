@@ -45,7 +45,6 @@ export class ConsoleLog extends LogChannel {
           chalk.yellowBright(message)
         );
         break;
-
       case "error":
         // add an error icon
         console.log(

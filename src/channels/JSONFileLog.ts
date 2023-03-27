@@ -40,7 +40,7 @@ export class JSONFileLog extends ChunkFileLog {
 
     const logsDirectory = this.channelConfigurations.storagePath + "/json";
 
-    ensureDirectoryAsync(logsDirectory);
+    await ensureDirectoryAsync(logsDirectory);
 
     const filePath = logsDirectory + "/" + fileName;
 
@@ -74,7 +74,7 @@ export class JSONFileLog extends ChunkFileLog {
       delete data.trace;
     }
 
-    const jsonContent: any = getJsonFileAsync(filePath);
+    const jsonContent: any = await getJsonFileAsync(filePath);
 
     jsonContent.logs.push(data);
 
