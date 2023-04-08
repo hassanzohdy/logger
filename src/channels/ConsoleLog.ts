@@ -17,11 +17,13 @@ export class ConsoleLog extends LogChannel {
    * {@inheritdoc}
    */
   public log(module: string, action: string, message: any, level: LogLevel) {
+    const date = new Date().toISOString().replace("T", " ").substring(0, 19); // i.e 2019-01-01 12:00:00
     switch (level) {
       case "debug":
         // add a debug icon
         console.log(
           chalk.magentaBright("⚙"),
+          chalk.yellow(`(${date})`),
           chalk.cyan(`[${module}]`),
           chalk.magenta(`[${action}]`),
           chalk.magentaBright(message)
@@ -31,6 +33,7 @@ export class ConsoleLog extends LogChannel {
         // add an info icon
         console.log(
           chalk.blueBright("ℹ"),
+          chalk.yellow(`(${date})`),
           chalk.cyan(`[${module}]`),
           chalk.magenta(`[${action}]`),
           chalk.blueBright(message)
@@ -40,6 +43,7 @@ export class ConsoleLog extends LogChannel {
         // add a warning icon
         console.log(
           chalk.yellow("⚠"),
+          chalk.green(`(${date})`),
           chalk.cyan(`[${module}]`),
           chalk.magenta(`[${action}]`),
           chalk.yellowBright(message)
@@ -49,6 +53,7 @@ export class ConsoleLog extends LogChannel {
         // add an error icon
         console.log(
           chalk.red("✗"),
+          chalk.yellow(`(${date})`),
           chalk.cyan(`[${module}]`),
           chalk.magenta(`[${action}]`),
           chalk.redBright(message)
@@ -59,6 +64,7 @@ export class ConsoleLog extends LogChannel {
         // add a success icon
         console.log(
           chalk.green("✓"),
+          chalk.yellow(`(${date})`),
           chalk.cyan(`[${module}]`),
           chalk.magenta(`[${action}]`),
           chalk.greenBright(message)
@@ -68,6 +74,7 @@ export class ConsoleLog extends LogChannel {
       default:
         console.log(
           "[log]",
+          chalk.yellow(`(${date})`),
           chalk.cyan(`[${module}]`),
           chalk.magenta(`[${action}]`),
           message
