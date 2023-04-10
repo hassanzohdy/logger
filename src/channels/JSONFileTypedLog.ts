@@ -37,10 +37,15 @@ export class JSONFileTypedLog extends ChunkFileLog {
     // check for debug mode
 
     const fileName = this.getFileName(this.channelConfigurations.chunk!);
+    const regex = /[^\w\d\s\-_.]/gi;
 
     const logsDirectory =
       this.channelConfigurations.storagePath +
-      `/json/${level}/${module}/${action}`;
+      `/json/${level}/${String(module).toLocaleLowerCase()}/${String(
+        action
+      ).toLowerCase()}`.replace(regex, "");
+
+    // remove any invalid path characters from directory
 
     await ensureDirectoryAsync(logsDirectory);
 
