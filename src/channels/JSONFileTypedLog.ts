@@ -8,11 +8,11 @@ import dayjs from "dayjs";
 import { LogLevel } from "../types";
 import { ChunkFileLog, ChunkFileLogConfig } from "./ChunkFileLog";
 
-export class JSONFileLog extends ChunkFileLog {
+export class JSONFileTypedLog extends ChunkFileLog {
   /**
    * {@inheritdoc}
    */
-  public name = "jsonFile";
+  public name = "jsonFileTyped";
 
   /**
    * Constructor
@@ -38,7 +38,9 @@ export class JSONFileLog extends ChunkFileLog {
 
     const fileName = this.getFileName(this.channelConfigurations.chunk!);
 
-    const logsDirectory = this.channelConfigurations.storagePath + "/json";
+    const logsDirectory =
+      this.channelConfigurations.storagePath +
+      `/json/${level}/${module}/${action}`;
 
     await ensureDirectoryAsync(logsDirectory);
 
@@ -58,7 +60,6 @@ export class JSONFileLog extends ChunkFileLog {
     }
 
     const data = {
-      level,
       module,
       action,
       message,

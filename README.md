@@ -206,6 +206,33 @@ If the log is an `error` log, the trace will also be included:
 }
 ```
 
+## JSON File Typed Log Channel
+
+This channel pretty much the same as `JSON File Log Channel`, but the difference is that the file path is structured as follows:
+
+`/$storagePath/json/$level/$module/$action/$date.json`
+
+Where `$level` is the log level, `$module` is the module name, `$action` is the action name, and `$date` is the date format.
+
+This will make files more organized and easier to trace.
+
+```ts
+import logger, { JSONFileTypedLog } from '@mongez/logger';
+
+logger.configure({
+    channels: [
+        new JSONFileTypedLog({
+            storageDirectory: process.cwd() + '/logs',
+            dateFormat: {
+                date: 'DD-MM-YYYY',
+                time: 'HH:mm:ss'
+                month: 'YYYY MM',
+            },
+        })
+    ]
+});
+```
+
 ## Create Custom Log Channel
 
 You can create your own log channel by extending the `LogChannel` class
