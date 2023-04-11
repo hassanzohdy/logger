@@ -37,7 +37,7 @@ export class JSONFileTypedLog extends ChunkFileLog {
     // check for debug mode
 
     const fileName = this.getFileName(this.channelConfigurations.chunk!);
-    const regex = /[^\w\d\s\-_.]/gi;
+    const regex = /[^\w\d\s\-_.\/]/gi;
 
     const logsDirectory =
       this.channelConfigurations.storagePath +
