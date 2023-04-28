@@ -40,7 +40,7 @@ export class JSONFileTypedLog extends ChunkFileLog {
     const regex = /[^\w\d\s\-_.\/]/gi;
 
     const logsDirectory =
-      this.channelConfigurations.storagePath + `/json/${level}/${fileName}`;
+      this.channelConfigurations.storagePath + `/json/${level}`;
 
     // remove any invalid path characters from directory
 

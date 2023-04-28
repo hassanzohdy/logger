@@ -1,6 +1,6 @@
 {
     "name": "@mongez/logger",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "A powerful system for logging messages and errors in nodejs.",
     "main": "src/index.ts",
     "scripts": {
