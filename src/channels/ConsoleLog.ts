@@ -17,7 +17,8 @@ export class ConsoleLog extends LogChannel {
    * {@inheritdoc}
    */
   public log(module: string, action: string, message: any, level: LogLevel) {
-    const date = new Date().toISOString().replace("T", " ").substring(0, 19); // i.e 2019-01-01 12:00:00
+    // display date and time with milliseconds
+    const date = new Date().toISOString(); // i.e 2021-01-01T00:00:00.000Z
     switch (level) {
       case "debug":
         // add a debug icon
